@@ -3,65 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ইনফিনিটি ভাইয়ের জাদুকরী ওয়েবসাইট</title>
+    <title>ইনফিনিটি ভাইয়ের সিক্রেট পাসওয়ার্ড জেনারেটর</title>
     <style>
-       
-        input {
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 50px;
-            border: 2px solid #ff4500;
-            background-color: #ff0000;
-            color: #ffffff;
-            margin-bottom: 15px;
-            width: 80%;
-            max-width: 300px;
-            outline: none;
+        /* গেমার ডার্ক মোড লুক */
+        body {
+            background-color: #0f172a;
+            color: #38bdf8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
         }
-
+        h1 {
+            color: #f43f5e;
+        }
+        /* পাসওয়ার্ড দেখানোর বক্স */
+        .password-box {
+            background-color: #1e293b;
+            border: 2px solid #38bdf8;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 350px;
+            color: #10b981;
+            word-wrap: break-word;
+        }
+        /* জোস বাটন স্টাইল */
         button {
-            padding: 12px 24px;
+            padding: 12px 28px;
             font-size: 16px;
-            background-color: #0000ff;
-            color: #ffffff;
+            background-color: #f43f5e;
+            color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            transition: 0.3s;
+            box-shadow: 0 4px 14px rgba(244, 63, 94, 0.4);
+            transition: 0.2s;
         }
-
         button:hover {
-            background-color: #ffff00;
+            background-color: #e11d48;
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body style="background-color: #1a1a1a; color: #ffffff; font-family: sans-serif; text-align: center; padding: 40px 20px;">
+<body>
 
-    <h1>আসসালামু আলাইকুম ভাই! 👋</h1>
-    <p style="color: #bbbbbb;">আমি টার্মাক্সে সফলভাবে কোড লিখেছি। 🥀</p>
-    
-    <p>
-        <img src="https://picsum.photos/300/200" alt="ইন্টারনেট থেকে ছবি" style="border-radius: 12px; border: 2px solid #ffffff; box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);">
-    </p>
+    <h1>লক অ্যান্ড লোড! 🔐</h1>
+    <p style="color: #94a3b8;">নিচের বাটনে ক্লিক করে হ্যাকার-প্রুফ স্ট্রং পাসওয়ার্ড তৈরি করো ভাই।</p>
+
+    <div class="password-box" id="passDisplay">********</div>
 
     <p>
-        <input type="text" id="myInput" placeholder="এখানে তোমার নাম লেখো ভাই...">
-    </p>
-
-    <p>
-        <button type="button" onclick="showMagic()">ম্যাজিক দেখো 🪄</button>
+        <button type="button" onclick="generatePassword()">নতুন পাসওয়ার্ড বানাও ⚡</button>
     </p>
 
     <script>
-        function showMagic() {
-            var name = document.getElementById("myInput").value.trim();
-            
-            if (name === "") {
-                alert("আগে বক্সে কিছু একটা লেখো ভাই! 😃");
-            } else {
-                alert("স্বাগতম ভাই " + name + "! তুমি তো পুরো প্রো-ডেভেলপার হয়ে গেছ! 🔥");
+        function generatePassword() {
+            // পাসওয়ার্ড বানানোর উপাদান (অক্ষর, সংখ্যা ও স্পেশাল ক্যারেক্টার)
+            var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+            var passwordLength = 10; // আমরা ১০ অক্ষরের পাসওয়ার্ড বানাবো
+            var password = "";
+
+            // লুপ (Loop) চালিয়ে লটারি করার মতো একটা একটা করে ক্যারেক্টার বেছে নেওয়া
+            for (var i = 0; i < passwordLength; i++) {
+                var randomNumber = Math.floor(Math.random() * chars.length);
+                password += chars.substring(randomNumber, randomNumber + 1);
             }
+
+            // স্ক্রিনে পাসওয়ার্ডটি ফুটিয়ে তোলা
+            document.getElementById("passDisplay").innerText = password;
         }
     </script>
 
